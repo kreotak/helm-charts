@@ -31,7 +31,9 @@ podAnnotations: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
-
+volumes: {}
+  # persistent: true
+  # claimName: octoprint-pv-claim
 securityContext:
   privileged: true
   # capabilities:

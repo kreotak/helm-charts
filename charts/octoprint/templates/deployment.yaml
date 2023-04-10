@@ -28,6 +28,11 @@ spec:
         - name: printer
           hostPath:
             path: {{ .Values.config.usbDevice }}
+        {{ if .Values.volume.persistent }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Values.volumes.claimName }}
+        {{ end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -43,6 +48,10 @@ spec:
           volumeMounts:
           - name: printer
             mountPath: /dev/ttyUSB0
+          {{ if .Values.volume.persistent }}
+          - name: data
+            mountPath: /octoprint
+          {{ end }}
           env:
             - name: "OCTOPRINT_PORT"
               value: "{{ .Values.service.port }}"
