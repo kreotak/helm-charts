@@ -28,7 +28,7 @@ spec:
         - name: printer
           hostPath:
             path: {{ .Values.config.usbDevice }}
-        {{ if .Values.volume.persistent }}
+        {{ if .Values.volumes.persistent }}
         - name: data
           persistentVolumeClaim:
             claimName: {{ .Values.volumes.claimName }}
@@ -48,7 +48,7 @@ spec:
           volumeMounts:
           - name: printer
             mountPath: /dev/ttyUSB0
-          {{ if .Values.volume.persistent }}
+          {{ if .Values.volumes.persistent }}
           - name: data
             mountPath: /octoprint
           {{ end }}
