@@ -28,6 +28,8 @@ vpn:
       value: "XXX"
     - name: "WIREGUARD_ADDRESSES"
       value: "XXX"
+    - name: "WEB_LISTENING_PORT"
+      value: "80"
 
 
 imagePullSecrets: [ ]
