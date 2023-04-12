@@ -29,7 +29,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       {{- if eq .Values.vpn.enabled "true" }}
       volumes:
-        - name: tunDevice
+        - name: tun-device
           hostPath:
             path: {{ .Values.vpn.tunDevice }}
       {{- end }}
@@ -41,7 +41,7 @@ spec:
           image: "{{ .Values.vpn.image }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
-            - name: tunDevice
+            - name: tun-device
               mountPath: /dev/net/tun
           ports:
             - name: http
