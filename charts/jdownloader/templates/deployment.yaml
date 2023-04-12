@@ -50,7 +50,7 @@ spec:
           env:
             {{- range .Values.vpn.env }}
             - name: {{ .name }}
-              value: "{{ .value }}""
+              value: "{{ .value }}"
             {{- end }}
         {{- end }}
         - name: {{ .Chart.Name }}
@@ -71,6 +71,9 @@ spec:
             httpGet:
               path: /
               port: http
+          env:
+            - name: "WEB_LISTENING_PORT"
+              value: "{{ .Values.service.port }}"
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
