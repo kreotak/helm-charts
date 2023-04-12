@@ -50,7 +50,7 @@ spec:
           env:
             {{- range .Values.vpn.env }}
             - name: {{ .name }}
-              value: {{ .value }}
+              value: "{{ .value }}""
             {{- end }}
         {{- end }}
         - name: {{ .Chart.Name }}
