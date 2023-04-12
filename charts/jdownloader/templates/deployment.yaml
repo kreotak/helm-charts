@@ -58,7 +58,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if eq .Values.vpn.enabled eq "false" }}
+          {{- if eq .Values.vpn.enabled "false" }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -74,6 +74,9 @@ spec:
           env:
             - name: "WEB_LISTENING_PORT"
               value: "{{ .Values.service.port }}"
+          {{ else }}
+          command: ["WEB_LISTENING_PORT={{ .Values.service.port }} /bin/sh"]
+          args: ["startapp.sh"]
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
