@@ -16,7 +16,8 @@ vpn:
   image: "gmcgaw/gluetun:3.33.0"
   securityContext:
     capabilities:
-      - NET_ADMIN
+      add:
+        - NET_ADMIN
   tunDevice: "/dev/net/tun"
   env: # add your parameters here, see @https://github.com/qdm12/gluetun/wiki
     - name: "VPN_SERVICE_PROVIDER"
