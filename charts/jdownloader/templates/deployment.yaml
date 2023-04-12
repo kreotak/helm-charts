@@ -71,12 +71,6 @@ spec:
             httpGet:
               path: /
               port: http
-          env:
-            - name: "WEB_LISTENING_PORT"
-              value: "{{ .Values.service.port }}"
-          {{ else }}
-          command: ["WEB_LISTENING_PORT={{ .Values.service.port }} /bin/sh"]
-          args: ["startapp.sh"]
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
