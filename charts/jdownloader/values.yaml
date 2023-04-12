@@ -13,7 +13,7 @@ image:
 vpn:
   enabled: "false"
   name: gluetun
-  image: "gmcgaw/gluetun:v3.33.0"
+  image: "qmcgaw/gluetun:v3.33.0"
   securityContext:
     capabilities:
       add:

@@ -27,6 +27,12 @@ spec:
       serviceAccountName: {{ include "jdownloader.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if eq .Values.vpn.env "true" }}
+      volumes:
+        - name: tunDevice
+          hostPath:
+            path: {{ .Values.vpn.tunDevice }}
+      {{- end }}
       containers:
         {{- if eq .Values.vpn.enabled "true" }}
         - name: {{ .Values.vpn.name }}
@@ -34,6 +40,9 @@ spec:
             {{- toYaml .Values.vpn.securityContext | nindent 12 }}
           image: "{{ .Values.vpn.image }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: tunDevice
+              mountPath: /dev/net/tun
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
