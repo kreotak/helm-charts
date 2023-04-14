@@ -35,7 +35,7 @@ spec:
         {{ if .Values.volumes.persistent }}
         - name: data
           persistentVolumeClaim:
-            claimName: {{ .Values.volumes.claimName }}
+            claimName: {{ include "jdownloader.fullname" . }}-pvc
         {{ end }}
       {{- end }}
       containers:
