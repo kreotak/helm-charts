@@ -32,6 +32,11 @@ spec:
         - name: tun-device
           hostPath:
             path: {{ .Values.vpn.tunDevice }}
+        {{ if .Values.volumes.persistent }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Values.volumes.claimName }}
+        {{ end }}
       {{- end }}
       containers:
         {{- if eq .Values.vpn.enabled "true" }}
@@ -58,6 +63,13 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{ if .Values.volumes.persistent }}
+          volumeMounts:
+            - name: data
+              mountPath: /downloads
+            - name: data
+              mountPath: /config
+          {{ end }}
           {{- if eq .Values.vpn.enabled "false" }}
           ports:
             - name: http

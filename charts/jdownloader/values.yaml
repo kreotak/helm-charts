@@ -10,6 +10,10 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+volumes: {}
+  # persistent: true
+  # claimName: jdown-pv-claim
+
 vpn:
   enabled: "false"
   name: gluetun
