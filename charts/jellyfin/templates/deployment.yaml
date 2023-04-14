@@ -56,9 +56,7 @@ spec:
           {{ if .Values.volumes.persistent }}
           volumeMounts:
             - name: media
-              mountPath: /media/videos
-            - name: media
-              mountPath: /media/audio
+              mountPath: /media
           {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
