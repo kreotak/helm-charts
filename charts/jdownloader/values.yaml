@@ -10,9 +10,11 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-volumes: {}
-  # persistent: true
-  # claimName: jdown-pv-claim
+volumes:
+  persistent: false
+  storageClassName: local-path
+  storageSize: 250Gi
+  hostPath: /opt/k3s/data
 
 vpn:
   enabled: "false"

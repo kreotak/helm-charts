@@ -1,0 +1,15 @@
+{{ if .Values.volumes.persistent }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "jdownloader.fullname" . }}-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: {{ .Values.volumes.storageSize }}
+  storageClassName: {{ .Values.volumes.storageClassName }}
+{{- end }}
