@@ -1,0 +1,16 @@
+{{ if .Values.volumes.persistent -}}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "jellyfin.fullname" . }}-pv
+spec:
+  capacity:
+    storage: {{ .Values.volumes.storageSize }}
+  volumeMode: Filesystem
+  accessModes:
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: {{ .Values.volumes.storageClassName }}
+  hostPath:
+    path: {{ .Values.volumes.hostPath }}
+{{ end -}}
