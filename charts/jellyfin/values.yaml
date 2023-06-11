@@ -11,6 +11,8 @@ image:
   tag: ""
 
 volumes:
+  config:
+    storageSize: 1Gi
   persistent: false
   hostPath: ""
   storageClassName: local-path
