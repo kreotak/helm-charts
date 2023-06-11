@@ -32,6 +32,9 @@ spec:
         - name: media
           persistentVolumeClaim:
             claimName: {{ include "jellyfin.fullname" . }}-pvc
+        - name: config
+          persistentVolumeClaim:
+            claimName: {{ include "jellyfin.fullname" . }}-config-pvc
         {{ end }}
       containers:
         - name: {{ .Chart.Name }}
