@@ -12,6 +12,7 @@ image:
 
 volumes:
   config:
+    hostPath: ""
     storageSize: 1Gi
   persistent: false
   hostPath: ""
