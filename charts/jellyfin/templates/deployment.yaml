@@ -57,6 +57,8 @@ spec:
           volumeMounts:
             - name: media
               mountPath: /media
+            - name: config
+              mountPath: /config
           {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
