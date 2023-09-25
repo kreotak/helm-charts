@@ -1,0 +1,36 @@
+apiVersion: v1
+entries:
+  jdownloader:
+  - apiVersion: v2
+    appVersion: v23.03.1
+    created: "2023-09-25T19:40:29.281784642Z"
+    description: A Helm chart for JDownloader
+    digest: 02607e153c6dda287dfebe2b3c5a7f10342dd44782015c707c0178d4c8a17686
+    name: jdownloader
+    type: application
+    urls:
+    - https://github.com/kreotak/helm-charts/releases/download/jdownloader-0.3.1/jdownloader-0.3.1.tgz
+    version: 0.3.1
+  jellyfin:
+  - apiVersion: v2
+    appVersion: 10.8.10
+    created: "2023-09-25T19:40:29.408691465Z"
+    description: A Helm chart for Kubernetes
+    digest: 0e2dc89b688924d4a812ae941d364d1873a92c6cdaa632488c9f1f8619f24139
+    name: jellyfin
+    type: application
+    urls:
+    - https://github.com/kreotak/helm-charts/releases/download/jellyfin-0.2.1/jellyfin-0.2.1.tgz
+    version: 0.2.1
+  octoprint:
+  - apiVersion: v2
+    appVersion: 1.8.7
+    created: "2023-09-25T19:40:29.57182385Z"
+    description: A Helm chart for Octoprint
+    digest: 48e31e3d1b6fb73e6e099cb1bd22009377f9060dc520361068c9e07e800e9a08
+    name: octoprint
+    type: application
+    urls:
+    - https://github.com/kreotak/helm-charts/releases/download/octoprint-0.2.0/octoprint-0.2.0.tgz
+    version: 0.2.0
+generated: "2023-09-25T19:40:29.57183175Z"
