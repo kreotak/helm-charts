@@ -1,5 +1,27 @@
 apiVersion: v1
 entries:
+  eclipse-mosquitto:
+  - apiVersion: v2
+    appVersion: 2.0.18
+    created: "2023-09-30T19:56:58.109668791Z"
+    description: A Helm chart for eclipse-mosquitto
+    digest: 511d668d56f6dc55c583f84de43b0189e7cb4fd332baf3e6a262e77c3ceabfd7
+    name: eclipse-mosquitto
+    type: application
+    urls:
+    - https://github.com/kreotak/helm-charts/releases/download/eclipse-mosquitto-0.1.0/eclipse-mosquitto-0.1.0.tgz
+    version: 0.1.0
+  grottserver:
+  - apiVersion: v2
+    appVersion: 2.7.8
+    created: "2023-09-30T19:56:58.245798117Z"
+    description: A Helm chart for grottserver
+    digest: 49f2d64e4b1272c5a93054750489e2b8db30c837355accbf6bc7bfab55ee98a0
+    name: grottserver
+    type: application
+    urls:
+    - https://github.com/kreotak/helm-charts/releases/download/grottserver-0.1.0/grottserver-0.1.0.tgz
+    version: 0.1.0
   jdownloader:
   - apiVersion: v2
     appVersion: v23.03.1
@@ -43,4 +65,4 @@ entries:
     urls:
     - https://github.com/kreotak/helm-charts/releases/download/octoprint-0.2.0/octoprint-0.2.0.tgz
     version: 0.2.0
-generated: "2023-09-25T19:50:15.857481004Z"
+generated: "2023-09-30T19:56:58.245814318Z"
