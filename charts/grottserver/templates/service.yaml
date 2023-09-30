@@ -8,8 +8,12 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: grott-tcp
       protocol: TCP
-      name: http
+      name: grott-tcp
+    - port: {{ .Values.service.port }}
+      targetPort: grott-udp
+      protocol: UDP
+      name: grott-udp
   selector:
     {{- include "grottserver.selectorLabels" . | nindent 4 }}
