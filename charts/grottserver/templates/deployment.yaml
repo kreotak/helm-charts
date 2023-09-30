@@ -50,13 +50,13 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: "gmqttip"
-              value: {{ .Values.config.mqtt.host }}
+              value: "{{ .Values.config.mqtt.host }}"
             - name: "TZ"
-              value: {{ .Values.config.tz }}
+              value: "{{ .Values.config.tz }}"
             - name: "ginvtype"
-              value: {{ .Values.config.invtype }}
+              value: "{{ .Values.config.invtype }}"
             - name: "gblockcmd"
-              value: {{ .Values.config.blockcmd }}
+              value: "{{ .Values.config.blockcmd }}"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
