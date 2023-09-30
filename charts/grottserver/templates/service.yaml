@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "grottserver.fullname" . }}
+  labels:
+    {{- include "grottserver.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: grott-tcp
+      protocol: TCP
+      name: grott-tcp
+    - port: {{ .Values.service.port }}
+      targetPort: grott-udp
+      protocol: UDP
+      name: grott-udp
+  selector:
+    {{- include "grottserver.selectorLabels" . | nindent 4 }}

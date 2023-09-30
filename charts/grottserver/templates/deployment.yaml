@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "grottserver.fullname" . }}
+  labels:
+    {{- include "grottserver.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "grottserver.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "grottserver.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "grottserver.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: grott-tcp
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+            - name: grott-udp
+              containerPort: {{ .Values.service.port }}
+              protocol: UDP
+          livenessProbe:
+            tcpSocket:
+              port: grott-tcp
+          readinessProbe:
+            tcpSocket:
+              port: grott-tcp
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: "gmqttip"
+              value: "{{ .Values.config.mqtt.host }}"
+            - name: "TZ"
+              value: "{{ .Values.config.tz }}"
+            - name: "ginvtype"
+              value: "{{ .Values.config.invtype }}"
+            - name: "gblockcmd"
+              value: "{{ .Values.config.blockcmd }}"
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
