@@ -15,9 +15,12 @@ nameOverride: ""
 fullnameOverride: ""
 
 config:
-  invtype: sph # model type of inverter
-  blockcmd: true # block outside commands
-  tz: Europe/Berlin # timezone
+  # model type of inverter
+  invtype: sph
+  # block outside commands
+  blockcmd: true
+  # timezone
+  tz: Europe/Berlin
   mqtt:
     host: eclipse-mosquitto
 
