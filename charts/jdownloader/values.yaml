@@ -19,7 +19,7 @@ volumes:
 vpn:
   enabled: "false"
   name: gluetun
-  image: "qmcgaw/gluetun:v3.33.0"
+  image: "qmcgaw/gluetun:v3.36.0"
   securityContext:
     capabilities:
       add:
