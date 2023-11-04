@@ -24,6 +24,16 @@ entries:
     version: 0.1.0
   jdownloader:
   - apiVersion: v2
+    appVersion: v23.06.1
+    created: "2023-11-04T19:20:53.965195215Z"
+    description: A Helm chart for JDownloader
+    digest: fcf6fe7cc28a87247313b58a5e42b3ca139ce017ce75a6638199c771b23b3811
+    name: jdownloader
+    type: application
+    urls:
+    - https://github.com/kreotak/helm-charts/releases/download/jdownloader-0.4.0/jdownloader-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     appVersion: v23.03.1
     created: "2023-09-25T19:40:29.281784642Z"
     description: A Helm chart for JDownloader
@@ -76,4 +86,4 @@ entries:
     urls:
     - https://github.com/kreotak/helm-charts/releases/download/ring-mqtt-0.1.0/ring-mqtt-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-31T11:07:56.473847066Z"
+generated: "2023-11-04T19:20:53.965211516Z"
