@@ -2,15 +2,30 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: {{ include "jdownloader.fullname" . }}-pv
+  name: {{ include "jdownloader.fullname" . }}-output-pv
 spec:
   capacity:
-    storage: {{ .Values.volumes.storageSize }}
+    storage: {{ .Values.volumes.output.storageSize }}
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: {{ .Values.volumes.storageClassName }}
   hostPath:
-    path: {{ .Values.volumes.hostPath }}
+    path: {{ .Values.volumes.hostPath }}/{{ include "jdownloader.fullname" . }}/output
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "jdownloader.fullname" . }}-config-pv
+spec:
+  capacity:
+    storage: {{ .Values.volumes.config.storageSize }}
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: {{ .Values.volumes.storageClassName }}
+  hostPath:
+    path: {{ .Values.volumes.hostPath }}/{{ include "jdownloader.fullname" . }}/config
 {{ end -}}

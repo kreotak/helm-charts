@@ -33,9 +33,12 @@ spec:
           hostPath:
             path: {{ .Values.vpn.tunDevice }}
         {{ if .Values.volumes.persistent }}
-        - name: data
+        - name: output
           persistentVolumeClaim:
-            claimName: {{ include "jdownloader.fullname" . }}-pvc
+            claimName: {{ include "jdownloader.fullname" . }}-output-pvc
+        - name: config
+          persistentVolumeClaim:
+            claimName: {{ include "jdownloader.fullname" . }}-config-pvc
         {{ end }}
       {{- end }}
       containers:
@@ -65,10 +68,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{ if .Values.volumes.persistent }}
           volumeMounts:
-            - name: data
+            - name: output
               mountPath: /downloads
-            - name: data
-              mountPath: /config
+            - name: config
+              mountPath: /config/cfg
           {{ end }}
           {{- if eq .Values.vpn.enabled "false" }}
           ports:
@@ -86,6 +89,9 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: "DARK_MODE"
+              value: "1"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
