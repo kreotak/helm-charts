@@ -69,7 +69,7 @@ spec:
           {{ if .Values.volumes.persistent }}
           volumeMounts:
             - name: output
-              mountPath: /downloads
+              mountPath: /output
             - name: config
               mountPath: /config/cfg
           {{ end }}
