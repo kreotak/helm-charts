@@ -13,8 +13,11 @@ image:
 volumes:
   persistent: false
   storageClassName: local-path
-  storageSize: 250Gi
-  hostPath: /opt/k3s/data
+  hostPath: /opt/k3s/data # chartName is added to the path
+  output:
+    storageSize: 250Gi
+  config:
+    storageSize: 50M
 
 vpn:
   enabled: "false"
