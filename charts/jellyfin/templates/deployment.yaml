@@ -45,7 +45,6 @@ spec:
               protocol: TCP
             - name: autodiscovery
               containerPort: 1900
-              hostPort: 1900
               protocol: UDP
           livenessProbe:
             httpGet:
