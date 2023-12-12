@@ -15,6 +15,10 @@ volumes:
   hostPath: ""
   storageClassName: local-path
   storageSize: 250Gi
+
+environment:
+  JELLYFIN_PublishedServerUrl: "http://jellyfin"
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
