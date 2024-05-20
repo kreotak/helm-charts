@@ -1,0 +1,17 @@
+{{ if .Values.volumes.persistent -}}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "octopi.fullname" . }}-config-pv
+spec:
+  capacity:
+    storage: {{ .Values.volumes.config.storageSize }}
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: {{ .Values.volumes.storageClassName }}
+  hostPath:
+    path: {{ .Values.volumes.hostPath }}/{{ include "octopi.fullname" . }}/config
+{{ end -}}
