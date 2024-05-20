@@ -38,7 +38,7 @@ volumes:
   config:
     storageSize: 5Gi
   # persistent: true
-  # claimName: octoprint-pv-claim
+  claimName: octoprint-config-pvc
 securityContext:
   privileged: true
   # capabilities:
