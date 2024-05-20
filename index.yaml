@@ -123,6 +123,16 @@ entries:
   octoprint:
   - apiVersion: v2
     appVersion: 1.10.1
+    created: "2024-05-20T19:32:06.999084092Z"
+    description: A Helm chart for Octoprint
+    digest: b5acef04e905db6257b04289996a2ea6fa37b63a7b4181e55821febce4c66cd3
+    name: octoprint
+    type: application
+    urls:
+    - https://github.com/kreotak/helm-charts/releases/download/octoprint-0.5.0/octoprint-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
+    appVersion: 1.10.1
     created: "2024-05-20T19:24:31.02832015Z"
     description: A Helm chart for Octoprint
     digest: 90538bbc10823978b33e0142176fa15df0b8f3dfb466031a4777a75c458ec92a
@@ -162,4 +172,4 @@ entries:
     urls:
     - https://github.com/kreotak/helm-charts/releases/download/ring-mqtt-0.1.0/ring-mqtt-0.1.0.tgz
     version: 0.1.0
-generated: "2024-05-20T19:24:31.028354885Z"
+generated: "2024-05-20T19:32:06.999230827Z"
