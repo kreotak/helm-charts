@@ -31,7 +31,12 @@ podAnnotations: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
-volumes: {}
+volumes:
+  storageClassName: local-path
+  # chartName is added to the path
+  hostPath: /opt/k3s/data
+  config:
+    storageSize: 5Gi
   # persistent: true
   # claimName: octoprint-pv-claim
 securityContext:
